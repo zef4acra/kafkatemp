@@ -1,2 +1,0 @@
-# kafkatemp
-Kafka Temporary Repository
