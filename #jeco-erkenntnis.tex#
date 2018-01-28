@@ -1,0 +1,721 @@
+% specify 12pt font in the settings for your document class
+\documentclass[12pt]{article}
+
+% set margins 
+\usepackage[top=4cm, bottom=4cm, left=3cm, right=2.5cm]{geometry}
+
+% make entire document double spaced
+\usepackage{setspace}
+\doublespacing
+
+% ensure footnotes are full sized and double spaced
+\usepackage{footmisc}
+\renewcommand{\footnotelayout}{\doublespacing\normalsize}
+
+% remove page numbers
+% \usepackage{nopageno}
+
+% left justify text
+% \makeatletter
+% \newcommand\iraggedright{%
+%  \let\\\@centercr\@rightskip\@flushglue \rightskip\@rightskip
+% \leftskip\z@skip}
+% \makeatother
+% \iraggedright
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{october}
+\usepackage{lineno}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}{Definition}[section]
+
+% For BJPS
+% \hyphenpenalty=10000
+% \hbadness=10000
+
+\begin{document}
+% \setpagewiselinenumbers
+% \modulolinenumbers[5]
+% \linenumbers
+% For BJPS
+% \raggedright
+% \doublespacing
+
+% z=16;pdftk A=../apa-central-2017.pdf cat A1-$z output ../wc-out.pdf
+
+\title{Asymmetry and the Geometry of Reason}
+\author{for blind review}
+\date{}
+\maketitle
+% \newcounter{expls}
+% \doublespacing
+
+\maketitle
+
+\begin{abstract}
+  {\noindent}The geometry of reason is the view that the underlying
+  topology for credence functions is a metric space, on the basis of
+  which axioms and theorems of epistemic utility for partial beliefs
+  are formulated. It implies that Jeffrey conditioning must cede to an
+  alternative form of conditioning. The latter fails a long list of
+  plausible expectations. One solution to this problem is to reject
+  the geometry of reason and accept information theory in its stead.
+  Information theory comes fully equipped with an axiomatic approach
+  which covers probabilism, standard conditioning, and Jeffrey
+  conditioning. It is not based on an underlying topology of a metric
+  space, but uses a non-commutative divergence instead of a symmetric
+  distance measure. I show that information theory, despite initial
+  promise, also fails to accommodate basic epistemic intuitions.
+\end{abstract}
+
+\section{Introduction}
+\label{intr}
+
+There\rcut{1} are various ways in which epistemic norms for partial
+beliefs are justified. Three important standards of justification in
+the literature are pragmatics, accuracy, and evidence. A partial
+belief, as opposed to a full belief, expresses uncertainty whether or
+not a proposition is true. In formal epistemology, this uncertainty is
+captured in mathematical models. Examples for epistemic norms are
+probabilism (partial beliefs are numerically most effectively
+represented as probabilities), Bayesian conditionalization (a rational
+agent updates beliefs using conditional probabilities if the updating
+scenario permits it), the principle of indifference (if there is no
+further information, mutually disjoint and jointly exhaustive events
+are equiprobable), and additional updating methods beyond standard
+conditioning (Jeffrey conditioning, affine constraints). Whether the
+justification for (or rejection of) these norms cites pragmatic,
+alethic, or evidential reasons, one important ingredient of the formal
+model is scoring rules.
+
+This paper investigates scoring rules for partial beliefs that
+exclusively reward and penalize on epistemic grounds. This aligns my
+paper roughly with the school that privileges alethic justification
+for epistemic norms, but it should be noted that the debate over
+scoring rules also has important implications for pragmatists and
+evidentialists, who hold that epistemic norms are rooted in decision
+theory and the appropriate relationship between beliefs and the
+evidence on which they are based, respectively.
+
+\begin{quotex}
+  \beispiel{Trichotomy}\label{ex:iexahmah} A game between the home
+  team and the away team ends in a win (for the home team), a loss, or
+  a tie.
+\end{quotex}
+
+I am restricting myself to finite algebras of propositions, as in
+{\xample}~\ref{ex:iexahmah}, where exactly one of three random
+outcomes takes place. Let these outcomes (or possible worlds) be
+$\xi_{1},\xi_{2},\xi_{3}$. Let the agent's report over these three
+outcomes be $c=(c_{1},c_{2},c_{3})^{\intercal}$ (the transpose
+$^{\intercal}$ symbol merely turns the list of numbers into a vector).
+Another restriction for this paper shall be that the $c_{i}$ are
+non-negative real numbers so that the vector $c$ is located in the
+non-negative orthant $\mathcal{D}_{0}$ of an $n=3$ dimensional vector
+space. The agent is penalized for reporting $c$ according to a loss
+function which she wants to minimize (she has no other concerns). Her
+penalty is
+\begin{equation}
+  \label{eq:choirail}
+  S(\xi_{i},c)
+\end{equation}
+once it is established that $\xi_{i}$ is the realized outcome. To
+discourage any dishonesty on her part, a common requirement is that
+the scoring rule be proper. The propriety of a scoring rule ensures
+that an agent reports the same distribution according to which she
+thinks the random process selects the outcome. A scoring rule $S$ is
+strictly proper if and only if
+\begin{equation}
+  \label{eq:xioputhu}
+  % \sum_{i=1}^{n}c_{i}S(\xi_{i},c)=\min_{\hat{c}\in\mathcal{D}_{0}}\left\{\sum_{i=1}^{n}c_{i}S(\xi_{i},\hat{c})\right\}
+  \sum_{i=1}^{n}c_{i}S(\xi_{i},c)<\sum_{i=1}^{n}c_{i}S(\xi_{i},\hat{c})\mbox{ for all }\hat{c}\in\mathcal{D}_{0}\setminus\{c\}
+\end{equation}
+A scoring rule $S$ is proper if and only if (\ref{eq:xioputhu}) is
+true with a $\leq$ symbol rather than $<$. In the following, I will
+consistently say \qnull{proper} and \qnull{propriety} in abbreviation
+for \qnull{strictly proper} and \qnull{strict propriety.} Propriety
+guarantees that an agent is motivated to report the distribution that
+they deem to be the one according to which the random outcomes are
+generated. Propriety significantly narrows down the set of acceptable
+scoring rules. John McCarthy showed in a seminal paper that propriety
+requires the existence of a convex entropy function, for which the
+scoring rule is a type of derivative (see \scite{7}{mccarthy56}{}).
+
+The problem I am addressing in this paper is whether there are further
+restrictions on rationally acceptable scoring rules. McCarthy's
+theorem leaves open the possibility for symmetric and non-symmetric
+scoring rules. A symmetric scoring rule assigns as much loss to a
+reported credence $c$ when the true distribution is $\bar{c}$ as it
+does when the report is $\bar{c}$ and the true distribution is $c$.
+Richard Pettigrew has recently defended symmetric scoring rules (for
+example in \scite{8}{pettigrew16}{80}).
+
+The claim at the heart of my paper is that a defence of symmetry
+reveals a more fundamental misapprehension about partial beliefs and
+their relationships to each other. The misapprehension is that there
+is a geometry of partial beliefs which can be visualized. It is
+tempting to view a credence $c=(c_{1},c_{2},c_{3})^{\intercal}$, for
+example, as a vector in 3-dimensional space and then evaluate its
+distance to other credences in terms of its metric distance to them. I
+will call this view, following Hannes Leitgeb and Richard Pettigrew
+(see \scite{8}{leitgebpettigrew10i}{210}), the geometry of reason.
+
+Thomas Mormann explicitly warns against the assumption that the
+metrics for a geometry of logic is Euclidean by default: \qeins{All
+  too often, we rely on geometric intuitions that are determined by
+  Euclidean prejudices. The geometry of logic, however, does not fit
+  the standard Euclidean metrical framework} (see
+\scite{8}{mormann05}{433}; also \scite{7}{miller84}{}). Mormann
+concludes in his article \qeins{Geometry of Logic and Truth
+  Approximation,}
+
+\begin{quotex}
+  Logical structures come along with ready-made geometric structures
+  that can be used for matters of truth approximation. Admittedly,
+  these geometric structures differ from those we are accustomed
+  with, namely, Euclidean ones. Hence, the geometry of logic is not
+  Euclidean geometry. This result should not come as a big surprise.
+  There is no reason to assume that the conceptual spaces we use for
+  representing our theories and their relations have a Euclidean
+  structure. On the contrary, this would appear to be an improbable
+  coincidence. \scite{3}{mormann05}{453}
+\end{quotex}
+
+For Pettigrew, the geometry of reason stands out as an appealing
+account because its associated scoring rule, the Brier score, is (up
+to linear transformations) unique once symmetry is required. Pettigrew
+even has an argument why this uniqueness in its own right has
+appealing features. I will provide a more detailed summary of the
+various requirements that one might have with respect to scoring
+rules. An alternative to the geometry of reason emerges from this
+analysis, which I will call information theory.
+
+Information theory, just like the geometry of reason, has an
+associated scoring rule: the Log score. The two different scoring
+rules, Brier score and Log score, license different updating methods
+in dynamic partial belief theory. They agree on Bayesian updating in
+the standard case (using conditional probabilities), but they disagree
+on updating in a Jeffrey-type updating scenario. Both scoring rules
+agree on recommending probabilism. I will argue that information
+theory is the better Bayesian, because Bayesian standard conditioning
+is smoothly generalized in information theory to more general updating
+situations (the technical term is affine constraints, of which
+Jeffrey-type updating scenarios are a special case). The
+generalization for the geometry of reason is bumpy at best,
+implausible at worst. I will present this view in full detail in the
+main body of the paper.
+
+The Log score is asymmetric, but unlike the Brier score not unique
+among its asymmetric peers. According to Pettigrew's independent
+argument why it is a good idea to have a unique scoring rule this
+would count against the Log score and against information theory. The
+Log score, however, is unique in fulfilling a locality requirement
+that arguably commands as much plausibility as symmetry. Yet the tenor
+of my paper is that Pettigrew's independent argument for uniqueness is
+suspect (in defence of Pettigrew, many of the claims in his book
+\emph{Accuracy and the Laws of Credence} do not depend on it) and that
+neither the Brier score's symmetry nor the Log score's locality is
+sufficient to make them uniquely superior to other scoring rules.
+
+I believe that there are serious problems with the geometry of reason,
+to the point where I would reject it as a plausible formal account of
+partial beliefs. As I will show, however, there are serious problems
+with information theory and how it accommodates epistemic intuitions
+as well. These are not insurmountable. My hope is that a further
+detachment from geometry can give us a better understanding of why
+information theory has the odd features that I will highlight in the
+paper.
+
+\section{Features of Scoring Rules}
+\label{sec:vidiedoo}
+
+\subsection{List of Features and Preliminaries}
+\label{subsec:ayudoosa}
+
+Consider the following list of features for a scoring rule SR.
+\begin{description}
+\item[propriety] The SR encourages an agent to report the
+  distribution which is her best guess for what generates the random
+  event.
+\item[geometry] The divergence function associated with the SR
+  is a metric. Consequently, credence functions can be
+  \qnull{visualized} with a distance defined between them.
+\item[information] The entropy function associated with the SR
+  fulfills Shannon's axioms for an entropy function. 
+\item[symmetry] The expected penalty for a reported distribution with
+  respect to the true distribution is the same when the roles of the
+  reported and true distribution are reversed.
+\item[locality] How a distribution scores when an event takes place
+  depends only on the credence assigned by the distribution to this
+  event.
+\item[horizon] The divergence function associated with the SR has a
+  tendency to measure distributions near the centre as being closer
+  together than distributions near the extremes, all else being equal.
+\item[conditioning] The SR licenses standard conditioning.
+\item[reductio-resistance] The SR is not led ad absurdum by licensing
+  implausible updating methods.
+\item[univocal dominance] The SR is uniquely superior to all other SRs
+  in order to address the Bronfman objection.
+\end{description}
+
+Here is a brief summary with evaluative annotation (plausibility, for
+example, means that in conclusion to my arguments in this paper I find
+the requirement plausible). If my evaluation is endorsed, only the Log
+score qualifies as a rationally acceptable scoring rule and
+information theory (as opposed to the geometry of reason) is
+vindicated; however, the violation of \textsc{horizon} must be
+explained, which is beyond the purview of this paper.
+
+\medskip
+
+\begin{tabular}{|l|l|l|l|l|}\hline
+  \textbf{property} & \textbf{Brier score} & \textbf{Log score} & \textbf{other scores} & \textbf{annotation} \\ \hline
+  propriety & yes & yes & yes & commonly accepted \\ \hline
+  geometry & yes & no & no & implausible \\ \hline
+  information & no & yes & no & plausible \\ \hline
+  symmetry & yes & no & no & implausible \\ \hline
+  locality & no & yes & no & weakly plausible \\ \hline
+  horizon & no & long story & perhaps & plausible \\ \hline
+  conditioning & yes & yes & perhaps & plausible \\ \hline
+  reductio-resistance & no & yes & perhaps & plausible \\ \hline
+  univocal dominance & yes & yes & perhaps & implausible \\ \hline
+\end{tabular}
+
+\medskip
+
+In the following, let $\mathcal{A}$ be the comprehensive algebra over
+a finite set of events $\Omega$. This means that all possible
+combinations of events in terms of negation, union, and intersection
+are in $\mathcal{A}$. If $\Omega=\{A,B\}$, for example, then
+$\mathcal{A}$ contains all possible combinations of
+\begin{equation}
+  \label{eq:ietoobai}
+  \bigcup_{i=1}^{4}\omega_{i}^{j(i)}
+\end{equation}
+where 
+\begin{equation}
+  \label{eq:ongeefoo}
+  \omega_{1}=\urcorner{}A\cap\urcorner{}B\hspace{.5in}
+  \omega_{2}=\urcorner{}A\cap{}B \hspace{.5in}
+  \omega_{3}=A\cap\urcorner{}B \hspace{.5in}
+  \omega_{4}=A\cap{}B
+\end{equation}
+and $j(i)$ either negates $\omega_{i}$ or not. If the cardinality of
+$\Omega$ is $m$, then the cardinality of $\mathcal{A}$ is $n=2^{{2}^{m}}$.
+For our example $\Omega=\{A,B\}$, $\mathcal{A}$ contains 16 elements;
+any credence function can therefore be viewed as a vector in the
+positive orthant of $\mathbb{R}^{16}$. An orthant is a generalization
+of a quadrant in $\mathbb{R}^{2}$. I will write $\mathcal{D}_{0}$ if
+the orthant includes vectors which have elements that equal zero;
+$\mathcal{D}$ if all elements of the vector are greater than zero. The
+zero vector itself is not an element of $\mathcal{D}_{0}$. Requiring
+that credence functions are finite, or non-negative, or positive in
+all elements, or regular in other ways is artificial in order to aid
+discussion. Examinations of what happens when these regularity
+conditions are weakened are always welcome.
+
+Probability functions are a strict subset of credence functions. In
+the vector space $\mathbb{R}^{n}$ they form a $(2^{m}-1)$-dimensional
+simplex. For two events, it is a three-dimensional tetrahedron in
+$\mathbb{R}^{16}$;\tbd{really?} for three events, it is a 7-simplex in
+$\mathbb{R}^{256}$. The reason why probability functions are of much
+lesser dimension than general credence functions is because they are
+constrained by logical entailment relationships and Kolmogorov's
+axioms. In the following, I will ignore the logical entailment
+relationships. This means that I will assume that credence functions
+obey these entailment relationships as probability functions do. This
+means that I can concentrate on a case such as the trichotomoy in
+{\xample}~\ref{ex:iexahmah} and restrict my attention to credence
+functions in $n$-dimensional space. All arguments defending
+probabilism in this paper do not only justify probabilistic credence
+functions over non-probabilistic ones that obey the logical entailment
+relationships, but ad fortiorem also over non-probabilistic ones that
+disobey the logical entailment relationships.
+
+Possible worlds $\xi_{i}$ corresponding to $\omega_{i}$ are
+not credence functions, but they can be embedded by defining the
+vector elements $\xi_{k}\in\{0,1\}$ depending on whether $\omega_{i}$
+is (1) or is not (0) negated in (\ref{eq:ietoobai}), $k=1,{\ldots},n$.
+This is somewhat artificial, especially the choice of the number 1,
+and any account of epistemic norms must prove itself to be robust if
+this number is changed to something else that makes sense (see
+\scite{8}{howson08}{20}; for a response \scite{7}{pettigrew16}{}, part
+I, chapter 6).
+
+\subsection{Scoring Rules, Entropy, Divergence}
+\label{subsec:weingoov}
+
+Bruno de Finetti showed that the probability functions form the convex
+hull of possible worlds so embedded (see de Finetti,
+\scite{11}{definetti17}{}, subsection 3.4). It is relatively
+straightforward to see that for any vector $c$ in the vector space of
+credence functions, there is a vector $p$ in the convex hull of
+probability functions which is closer to all possible worlds than $c$.
+If $c$ is not an element of the convex hull, then the vector $p$ is
+strictly closer to all possible worlds.
+
+There are two important points to make about de Finetti's theorem. (1)
+It shows in what sense probability functions are privileged over other
+credence functions. This can be cashed out in terms of pragmatics (see
+\scite{7}{savage71}{}) or accuracy (see \scite{7}{joyce98}{}) (perhaps
+also in terms of evidence; I am not familiar with the literature). (2)
+There is a need to define what it means for one credence function to
+be close to another credence function. One could simply use metric
+distance. I am hoping to make the case in what follows that this is
+implausible.
+
+Let us start more modestly with a scoring rule and restrict ourselves
+to probability functions $\mathcal{P}\subset\mathcal{D}_{0}$.
+Probabilism, after all, is not where the geometry of reason and
+information theory disagree.
+% Options for how (symmetric) distance or (non-symmetric) divergence is
+% most effectively measured will emerge. By effectiveness I mean
+% justificatory force for normative epistemic arguments.
+I have defined scoring rules in {\quation}~(\ref{eq:choirail}) and the
+associated propriety in {\quation}~(\ref{eq:xioputhu}). McCarthy
+characterizes proper scoring rules in a theorem whose proof he omits
+(see \scite{8}{mccarthy56}{654}). Thankfully, Arlo Hendrickson and
+Robert Buehler provide a proof (see
+\scite{8}{hendricksonbuehler71}{1918}).
+
+\begin{definition}
+  \label{def:yahjoith}
+  Let $\bar{D}$ be a convex subset of $\mathcal{D}$, $H$ be a function
+  $H:\bar{D}\rightarrow\mathbb{R}$, and $q,q^{\ast}\in{}\bar{D}$ such that
+  \begin{equation}
+    \label{eq:fooceiya}
+    H(p)\leq\langle{}p-q,q^{\ast}\rangle+H(q)\mbox{ for all }p\in{}\bar{D}.
+  \end{equation}
+Then $q^{\ast}$ is a supergradient of $H$ at $q$ relative to $\bar{D}$. 
+\end{definition}
+
+$\langle{}.,.\rangle$ is the inner product of two vectors (or the
+matrix product if dual spaces are used). The supergradient is the
+gradient wherever the function is differentiable.
+
+\begin{definition}
+  \label{def:ahthaive}
+  A function $f:V\subset\mathbb{R}^{k}\rightarrow\mathbb{R}$ is
+  homogeneous of degree $d$ if and only if
+  \begin{equation}
+    \label{eq:ooveighe}
+    f(\alpha{}x)=\alpha^{d}f(x)\mbox{ for all }\alpha>0.
+  \end{equation}
+\end{definition}
+
+Use of Euler's Homogeneous Function Theorem (see
+\scite{7}{zill11}{718}) allows for the proof of McCarthy's Theorem.
+Let $\nabla{}H$ be the gradient of the function $H$ if it exists, i.e.
+\begin{equation}
+  \label{eq:ailaekoi}
+  \nabla{}H(x)=\left(\frac{\partial{}H}{\partial{}x_{1}}(x),{\ldots},\frac{\partial{}H}{\partial{}x_{n}}(x)\right)^{\intercal}
+\end{equation}
+and
+\begin{equation}
+  \label{eq:ahphaete}
+  S(x)=\left(S(\xi_{1},x),{\ldots},S(\xi_{n},x)\right)^{\intercal},\Xi=\{\xi_{1},{\ldots},\xi_{n}\}
+\end{equation}
+
+\begin{theorem}[McCarthy's Theorem] 
+  \label{thm:lahpoodu}
+  A scoring rule
+  $S:\Xi\times\mathcal{P}\rightarrow\mathbb{R}\cup\{-\infty,\infty\}$
+  is proper if and only if there exists a function
+  $H:\mathcal{D}_{0}\rightarrow\mathbb{R}$ which is (a) homogeneous of
+  the first degree, (b) convex,\tbd{you may have to change everything
+    to rewards rather than loss in order to maintain convexity rather
+    than concavity here} and (c) such that $S$ is a supergradient of
+  $H$ relative to $\mathcal{D}_{0}$ at $p$ for all $p\in\mathcal{P}$.
+\end{theorem}
+
+If $H$ is differentiable, then $\nabla{}H(p)=S(p)$. It is important to
+take the partial derivative of $H$ as a function defined on
+$\mathcal{D}_{0}$, not just as a function defined on $\mathcal{P}$. As
+Hendrickson and Buehler point out, this is the error in
+\scite{8}{marschak59}{97}, where the Log score appears to be a
+counterexample to McCarthy's theorem. None of this is new, but it
+gives us leverage for what is to follow. Not only is McCarthy's
+Theorem a powerful characterization theorem for proper scoring rules,
+it also associates an entropy function $H$ and a divergence $D$ with
+each scoring rule. With McCarthy's result in hand, scoring rules now
+come as triplets of scoring rules, entropy functions, and divergences.
+
+\begin{definition}
+  \label{def:logahpoh}
+  The entropy $H$ associated with $S$ is defined as per McCarthy's
+  Theorem (see {\heorem}~\ref{thm:lahpoodu}); the divergence associated
+  with $S$ is defined to be
+\begin{equation}
+  \label{eq:reeshooz}
+  D_{S}(c\|\hat{c})=H(c)-H(\hat{c})-\langle{}c-\hat{c},S(\hat{c})\rangle
+\end{equation}
+\end{definition}
+
+Here are two example, the Log score and the Brier score. All summation
+indices go from 1 to $n$. If $x\in\mathcal{P}$, then
+$\sum_{k}x_{k}=1$. The loss function or scoring rule for the Log score
+is
+\begin{equation}
+  \label{eq:oneeraiw}
+  \mbox{(LS) }S(\xi_{i},x)=\left(\ln\sum_{k}x_{k}\right)-\ln{}x_{i}
+\end{equation}
+For the Brier score, it is
+\begin{equation}
+  \label{eq:hiexaeji}
+  \mbox{(BS) }S(\xi_{i},x)=\frac{2x_{i}}{\sum_{k}x_{k}}-1-\sum_{j}\left(\frac{x_{j}}{\sum_{k}x_{k}}\right)^{2}
+\end{equation}
+The corresponding entropy functions are
+\begin{equation}
+  \label{eq:yeuthohn}
+  \mbox{(LS) }H(x)=-\sum_{i}{}x_{i}\ln\frac{x_{i}}{\sum_{k}x_{k}}
+\end{equation}
+\begin{equation}
+  \label{eq:ahfooyai}
+  \mbox{(BS) }H(x)=\sum_{i}{}x_{i}\left(\frac{2x_{i}}{\sum_{k}x_{k}}-1-\sum_{j}\left(\frac{x_{j}}{\sum_{k}x_{k}}\right)^2\right)
+\end{equation}
+The reader can verify that
+\begin{equation}
+  \label{eq:eikughoh}
+  \nabla{}H(x)=S(x)
+\end{equation}
+for both the Log score and the Brier score. This is where we need the
+entropy to be defined on $\mathcal{D}\supset\mathcal{P}$ in order to
+avoid Marschak's error from above. For the Log score, the divergence
+is the Kullback-Leibler divergence,
+\begin{equation}
+  \label{eq:engeequu}
+  D_{\mbox{\tiny LS}}(p\|q)=\sum_{i}p_{i}\ln\frac{p_{i}}{\sum_{i}p_{k}}-\sum_{i}p_{i}\ln\frac{q_{i}}{\sum_{k}q_{k}}
+\end{equation}
+For the Brier score, the divergence is 
+\begin{equation}
+  \label{eq:aphooghi}
+  D_{\mbox{\tiny BS}}(p\|q)=\sum_{i}p_{i}\left[\sum_{j}\left(\frac{q_{j}}{\sum_{k}q_{k}}-\delta_{ij}\right)^{2}-\sum_{j}\left(\frac{p_{j}}{\sum_{k}p_{k}}-\delta_{ij}\right)^{2}\right]
+\end{equation}
+where $\delta_{ij}$ is the Kronecker delta.
+
+The Brier score divergence is symmetric for probability functions and
+thus can operate as a distance function on them. For both Log score
+and Brier score, the divergence is the difference between the expected
+loss of reported $q$ when $p$ is the true distribution and the entropy
+of $p$, which is the expected loss of reported $p$ when $p$ is the
+true distribution.
+
+In section\tbd{reference} I will show using convex conjugates that
+only the Brier score (and its close relatives) fulfill
+\textsc{symmetry}. In section\tbd{reference} I will show that only the
+Log score fulfills \textsc{locality}. These are not new results,
+although the proof using convex conjugates is original. Once these
+results are established, I have the tools to address Pettigrew's
+argument for \textsc{univocal dominance}. The core pieces of the paper
+are sections\tbd{reference}, where I show that the Brier score
+violates \textsc{reductio-resistance} and both Brier score and Log
+score violate \textsc{horizon}. 
+
+\section{Symmetry}
+\label{sec:oolohdej}
+
+The Brier score and its close relatives (linear transformations, which
+only differ from the Brier score in the sense that they bill/pay in a
+different currency and provide a different initial penalty/reward) are
+the only proper scoring rules fulfilling \textsc{symmetry}.
+
+\section{Locality}
+\label{sec:siethohj}
+
+\subsection{Rewarding Uncertainty About Non-Realized Outcomes}
+\label{subsec:paivaete}
+
+The Brier score, the Spherical score (another proper scoring rule),
+and many other scoring rules depend on all components of the vector
+$p$ representing a probabilistic credence function. A scoring rule
+fulfilling the \textsc{locality} requirement only depends on the
+probability assigned to the event that is the realized outcome (for a
+characterization of local scoring rules that are local in a less
+restrictive sense see \scite{7}{dawidetal12}{}). In
+{\ubsection}~\ref{subsec:kaixitun} I show, using Leonard J. Savage's
+proof (see \scite{8}{savage71}{794}), that the only scoring rule
+fulfilling \textsc{locality} are the Log score and its not relevantly
+different close relatives.
+
+\begin{quotex}
+  \beispiel{Tokens}\label{ex:augheebi} Casey draws from a bag with $n$
+  kinds of tokens in it: colour 1, colour 2, {\ldots}, colour $n$.
+  Tatum reports the forecast $(p_{1},{\ldots},p_{n})$. Tatum's
+  forecast agrees with the axioms of probability.
+\end{quotex}
+
+Let $p_{1}$ be fixed and colour 1 be the realized outcome. If the
+Brier score is used, Tatum's penalty $T$ depends on
+$p_{2},{\ldots},p_{n-1}$ and is
+\begin{equation}
+  \label{eq:kaewaeho}
+  T(p_{2},{\ldots},p_{n-1})=1-2p_{1}+\sum_{i=1}^{n-1}p_{i}^{2}+\left(1-\sum_{i=1}^{n-1}p_{i}\right)^{2}
+\end{equation}
+$T$ reaches its minimum where $p_{i}=\frac{1-p_{1}}{n-1}$ for
+$i=2,{\ldots},n-1$. The higher the entropy of Tatum's non-realized
+probabilities, the less stinging Tatum's penalty. The Brier score thus
+penalizes Tatum (1) for not correctly identifying colour 1 as the
+realized outcome, but also (2) for reporting variation in the
+non-realized probabilities. Even though this is the Brier score, it
+has a ring of information theory to it. The Log score depends only on
+the realized probability. I.J. Good appears to have favoured such a
+scoring rule (see \scite{8}{good52}{112}).
+
+Because I feel the intuitive appeal of information theory, I consider
+\textsc{locality} to be only weakly plausible. There is a sense in
+which you may want to reward a forecaster not only for assigning a
+high probability to the realized outcome, but also for uncertainty
+about the outcomes that were not realized. Of course, doing so
+sometimes results in a greater loss for Tatum than for Casey even if
+Tatum assigned a higher probability to the realized outcome. As an
+example, let Tatum's forecast be $(0.12,0.86,0.02)$ and Casey's be
+$(0.10,0.54,0.36)$. Even though Tatum assigned $12\%$ to colour 1
+while Casey assigned $10\%$, and Casey drew a token of colour 1, Tatum
+is penalized more severely at $1.5144$ compared to Casey at $1.2312$
+using the Brier score.
+
+\subsection{Bronfman Objection}
+\label{subsec:eemeingo}
+
+Here is how \textsc{locality} may still work in favour of information
+theory against the geometry of reason. To set the scene, I should
+mention that there are at least two publication anomalies in the study
+of scoring rules. I already mentioned the earlier one: McCarthy
+omitted the proof to one of its most important theorems. The proof,
+using Euler's Theorem, is not trivial and was published almost twenty
+years later by Hendrickson and Buehler. The later publication anomaly
+is that Aaron Bronfman wrote an excellent article about a problem with
+using supervaluationist semantics to justify probabilism (see
+\scite{7}{bronfman09}{}). Then he decided not to publish it. The
+manuscript has circulated and is available online.
+
+It is called \qeins{A Gap in Joyce's Argument for Probabilism.} Jim
+Joyce provides a non-pragmatic (i.e.\ alethic) vindication of
+probabilism by demonstrating that given a particular proper scoring
+rule, any non-probabilistic credence $c$ is dominated by a
+probabilistic credence function $p$ (depending on $c$) in the sense
+that $p$ is strictly closer to all possible worlds (and therefore more
+accurate) than $c$. No probabilistic credence function is dominated in
+this way (see \scite{7}{joyce98}{}). The proof is a version of de
+Finetti's theorem referred to in {\ubsection}~\ref{subsec:weingoov}.
+
+I owe the following characterization of Bronfman's objection to
+Pettigrew (see chapter 5 in \scite{7}{pettigrew16}{}; for the Pater
+Peperium case see \scite{7}{paul16}{}).
+
+\begin{quotex}
+  \beispiel{Pater Peperium}\label{ex:quuyaree} I must choose between
+  three sandwich options: Marmite, cheese, and Pater Peperium (or
+  Gentleman's Relish).
+\end{quotex}
+
+I have eaten cheese sandwiches before and feel indifferent about them.
+I have never had a Marmite or Pater Peperium sandwich, but know that
+people either love Marmite and hate Pater Peperium or vice versa.
+There appears to be nothing irrational about choosing the cheese
+sandwich even though either way (whether I am of the
+love-marmite-hate-pater-peperium or hate-marmite-love-pater-peperium
+type) there is a better sandwich to choose. 
+
+Joyce has shown that for any proper scoring rule, a non-probabilistic
+credence function is accuracy dominated by a probabilistic credence
+function. The Bronfman objection is that you can show that there is
+always another proper scoring rule (Bronfman shows that only having
+two candidate quadratic loss scoring rules suffices to make this
+point) by which moving from the accuracy dominated credence function
+to the probabilistic credence function results in a loss at some
+possible world. Unless we settle on a unique scoring rule to do the
+accounting, Joyce's non-pragmatic vindication of probabilism is
+undermined. 
+
+Pettigrew uses Bronfman's objection to propose \textsc{univocal
+  dominance}. It is an appealing feature of a scoring rule to have
+some claim to uniqueness in order to address Bronfman's objection. The
+Brier score has this claim: it is (up to linear transformation, which
+do not make a relevant difference) the only proper scoring rule which
+fulfills \textsc{symmetry}. Unfortunately for Pettigrew, the Brier
+score is not the only score with this kind of claim. The Log score is
+the only proper scoring rule which fulfills \textsc{locality}. We
+could now haggle over which uniqueness claim is stronger. In some
+ways, this paper is meant to undermine the intuitive appeal of
+\textsc{symmetry} altogether. I will not, however, push
+\textsc{univocal dominance} and \textsc{locality} as joint
+justification for the Log score, as Pettigrew pushes \textsc{univocal
+  dominance} and \textsc{symmetry} as joint justification for the
+Brier score. 
+
+Pettigrew's argument is suspect (he by no means is unaware of its
+tenuous appeal and reiterates that many of his results stand even if
+\textsc{univocal dominance} is implausible). Let a uniqueness claim
+have dependent and independent reasons. The dependent reasons justify
+the uniqueness on account of the features that the object of the
+uniqueness claim exhibits. The independent reasons make no reference
+to these features, but provide a reason to have a successful candidate
+for winning the uniqueness contest. I do not see how these independent
+reasons add to the epistemic justification for the uniqueness claim.
+
+\subsection{Proof of Locality Uniqueness for the Log Score}
+\label{subsec:kaixitun}
+
+Let there be a function $f:(a,b)\rightarrow\mathbb{R}$
+($a,b\in\mathbb{R}$ with $a<b$) for which the following is true: for
+every $x\in(a,b)$ there exists a linear function
+$L_{x}:\mathbb{R}\rightarrow\mathbb{R}$ such that $L_{x}(x)=x$ and
+\begin{equation}
+  \label{eq:jeedushe}
+  L_{x}(y)<f(y)\mbox{ for all }y\in(a,b)
+\end{equation}
+The conditions basically say that $f$ has a subgradient at every point
+in its domain. Then the function is strictly convex, i.e.
+\begin{equation}
+  \label{eq:poawaimo}
+  f(\lambda{}y+(1-\lambda)\hat{y})<\lambda{}f(y)+(1-\lambda)f(\hat{y})
+\end{equation}
+for all $0<\lambda<1$ and for all $y,\hat{y}$ in the domain of $f$. A
+theorem of convex analysis tells us that such a function is almost
+everywhere differentiable (i.e.\ the set of points where it is not
+differentiable is countable; see {\heorem}~25.5 in
+\scite{7}{rockafellar97}{}). 
+
+Define $f_{i}(p_{i})=S(\xi_{i},p_{i})$ for a scoring rule fulfilling
+\textsc{locality} and \textsc{propriety}. $f_{i}$ are functions from
+$[0,1]\rightarrow\mathbb{R}\cup\{-\infty,\infty\},i=1,{\ldots},n$.
+Propriety requires
+\begin{equation}
+  \label{eq:eushunie}
+  \sum_{i=1}^{n}p_{i}f_{i}(p_{i})>\sum_{i=1}^{n}q_{i}f_{i}(p_{i})\mbox{ for all }p,q\in\mathcal{P}
+\end{equation}
+where $p=(p_{1},{\ldots},p_{n})^{\intercal}$ and
+$q=(q_{1},{\ldots},q_{n})^{\intercal}$. Let $0<k<1$ be arbitrary, but
+fixed, and define $g_{k}:(0,1)\rightarrow\mathbb{R}$
+\begin{equation}
+  \label{eq:rozosuzo}
+  g_{k}(x)=xf_{1}(x\cdot{}k)+(1-x)f_{2}((1-x)\cdot{}k)
+\end{equation}
+Let $\alpha,\beta\in(0,1)$ with $\alpha\neq{}\beta$.
+(\ref{eq:eushunie}) for the two distributions
+$p=(\alpha\cdot{}k,(1-\alpha)\cdot{}k,\frac{1-k}{n-2},{\ldots},\frac{1-k}{n-2})$
+and
+$q=(\beta\cdot{}k,(1-\beta)\cdot{}k,\frac{1-k}{n-2},{\ldots},\frac{1-k}{n-2})$
+implies
+\begin{equation}
+  \label{eq:luophaek}
+  g_{k}(\alpha)>(\alpha\cdot{}k)f_{1}(\beta\cdot{}k)+((1-\alpha)\cdot{}k)f_{2}((1-\beta)\cdot{}k)
+\end{equation}
+
+
+% \section{References}
+% \label{refs}
+
+% \nocite{*} 
+
+% set bibtex bibliography to chicago style
+% \bibliographystyle{chicago}
+
+\bibliographystyle{ChicagoReedweb} 
+\bibliography{bib-2902}
+
+\end{document}
