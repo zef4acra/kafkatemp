@@ -1,0 +1,101 @@
+\begin{thebibliography}{17}
+\newcommand{\enquote}[1]{``#1''}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{}
+
+\bibitem[{Bronfman(2009)}]{bronfman09}
+Bronfman, Aaron.
+\newblock \enquote{A Gap In Joyce's Argument for Probabilism.}, 2009.
+\newblock University of Michigan: unpublished manuscript.
+
+\bibitem[{Dawid et~al.(2012)Dawid, Lauritzen, and Parry}]{dawidetal12}
+Dawid, A~Philip, Steffen Lauritzen, and Matthew Parry.
+\newblock \enquote{Proper Local Scoring Rules on Discrete Sample Spaces.}
+\newblock \emph{Annals of Statistics} 40, ~1: (2012) 593--608.
+
+\bibitem[{De~Finetti(2017)}]{definetti17}
+De~Finetti, Bruno.
+\newblock \emph{Theory of Probability}.
+\newblock Chichester, UK: Wiley, 2017.
+
+\bibitem[{Good(1952)}]{good52}
+Good, I.J.
+\newblock \enquote{Rational Decisions.}
+\newblock \emph{Journal of the Royal Statistical Society. Series B
+  (Methodological)} 14, ~1: (1952) 107--114.
+
+\bibitem[{Hendrickson and Buehler(1971)}]{hendricksonbuehler71}
+Hendrickson, Arlo, and Robert Buehler.
+\newblock \enquote{Proper Scores for Probability Forecasters.}
+\newblock \emph{Annals of Mathematical Statistics} 42, ~6: (1971) 1916--1921.
+
+\bibitem[{Howson(2008)}]{howson08}
+Howson, Colin.
+\newblock \enquote{De Finetti, Countable Additivity, Consistency and
+  Coherence.}
+\newblock \emph{British Journal for the Philosophy of Science} 59, ~1: (2008)
+  1--23.
+
+\bibitem[{Joyce(1998)}]{joyce98}
+Joyce, James.
+\newblock \enquote{A Nonpragmatic Vindication of Probabilism.}
+\newblock \emph{Philosophy of Science} 65, ~4: (1998) 575--603.
+
+\bibitem[{Leitgeb and Pettigrew(2010)}]{leitgebpettigrew10i}
+Leitgeb, Hannes, and Richard Pettigrew.
+\newblock \enquote{An Objective Justification of Bayesianism I: Measuring
+  Inaccuracy.}
+\newblock \emph{Philosophy of Science} 77, ~2: (2010) 201--235.
+
+\bibitem[{Marschak(1959)}]{marschak59}
+Marschak, Jacob.
+\newblock \enquote{Remarks on the Economics of Information.}
+\newblock Technical report, Cowles Foundation for Research in Economics, Yale
+  University, 1959.
+
+\bibitem[{McCarthy(1956)}]{mccarthy56}
+McCarthy, John.
+\newblock \enquote{Measures of the Value of Information.}
+\newblock \emph{Proceedings of the National Academy of Sciences} 42, ~9: (1956)
+  654--655.
+
+\bibitem[{Miller(1984)}]{miller84}
+Miller, David.
+\newblock \enquote{A Geometry of Logic.}
+\newblock In \emph{Aspects of Vagueness}, edited by Heinz Skala, Settimo
+  Termini, and Enric Trillas, Dordrecht, Holland: Reidel, 1984, 91--104.
+
+\bibitem[{Mormann(2005)}]{mormann05}
+Mormann, Thomas.
+\newblock \enquote{Geometry of Logic and Truth Approximation.}
+\newblock \emph{Poznan Studies in the Philosophy of the Sciences and the
+  Humanities} 83, ~1: (2005) 431--454.
+
+\bibitem[{Paul(2016)}]{paul16}
+Paul, L.A.
+\newblock \emph{Transformative Experience}.
+\newblock Oxford, UK: Oxford University, 2016.
+
+\bibitem[{Pettigrew(2016)}]{pettigrew16}
+Pettigrew, Richard.
+\newblock \emph{Accuracy and the Laws of Credence}.
+\newblock Oxford, UK: Oxford University, 2016.
+
+\bibitem[{Rockafellar(1997)}]{rockafellar97}
+Rockafellar, Ralph.
+\newblock \emph{Convex Analysis}.
+\newblock Princeton, N.J: Princeton University, 1997.
+
+\bibitem[{Savage(1971)}]{savage71}
+Savage, Leonard.
+\newblock \enquote{Elicitation of Personal Probabilities and Expectations.}
+\newblock \emph{Journal of the American Statistical Association} 66,  336:
+  (1971) 783--801.
+
+\bibitem[{Zill(2011)}]{zill11}
+Zill, Dennis.
+\newblock \emph{Multivariable Calculus}.
+\newblock Sudbury, MA: Jones and Bartlett, 2011.
+
+\end{thebibliography}
